@@ -1,0 +1,44 @@
+type User {
+  _id: String!
+  email: String!
+  password: Password!
+  nickname: String!
+  count: Int!
+  todos: [Todo]!
+}
+
+type Password {
+  hash: String!
+  salt: String!
+  iter: Int!
+}
+
+input PasswordInput {
+  hash: String!
+  salt: String!
+  iter: Int!
+}
+
+type Todo {
+  _id: String!
+  text: String!
+  seen: String!
+  userId: String!
+}
+
+type Query {
+  todos(userId: String!): [Todo]
+  user(_id: String!): User
+}
+
+type Mutation {
+  signup(email: String!, password: PasswordInput!, nickname: String!): Boolean
+  emailCheck(email: String!): Boolean
+  login(email: String!, password: String!): String
+  deleteUser(_id: String!, password: String!): Boolean
+  changePassword(_id: String!, password:String! newpassword: PasswordInput!): Boolean
+  changeNickname(_id: String!, nickname: String!): Boolean
+  createTodo(text: String!, userId: String!): Boolean
+  deleteTodo(_id: String!, userId: String!): Boolean
+  updateTodo(_id: String!, seen: Boolean!, userId: String!): Boolean
+}
