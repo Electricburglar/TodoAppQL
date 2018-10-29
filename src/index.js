@@ -8,7 +8,7 @@ import crypto from 'crypto';
 
 // connect mongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://root:root1234@ds229771.mlab.com:29771/mydb', {useNewUrlParser : true});
+mongoose.connect('mongodb://ID:PW@ds229771.mlab.com:29771/mydb', {useNewUrlParser : true});
 mongoose.connection.once('open', () => {
     console.log('MongoDB Connected...');
 });
